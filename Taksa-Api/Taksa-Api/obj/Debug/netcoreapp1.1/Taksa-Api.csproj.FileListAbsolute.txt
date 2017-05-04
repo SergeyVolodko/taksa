@@ -1,0 +1,9 @@
+D:\Projects\taksa\Taksa-Api\Taksa-Api\bin\Debug\netcoreapp1.1\Taksa-Api.deps.json
+D:\Projects\taksa\Taksa-Api\Taksa-Api\bin\Debug\netcoreapp1.1\Taksa-Api.runtimeconfig.json
+D:\Projects\taksa\Taksa-Api\Taksa-Api\bin\Debug\netcoreapp1.1\Taksa-Api.runtimeconfig.dev.json
+D:\Projects\taksa\Taksa-Api\Taksa-Api\bin\Debug\netcoreapp1.1\Taksa-Api.dll
+D:\Projects\taksa\Taksa-Api\Taksa-Api\bin\Debug\netcoreapp1.1\Taksa-Api.pdb
+D:\Projects\taksa\Taksa-Api\Taksa-Api\obj\Debug\netcoreapp1.1\Taksa-Api.csprojResolveAssemblyReference.cache
+D:\Projects\taksa\Taksa-Api\Taksa-Api\obj\Debug\netcoreapp1.1\Taksa-Api.AssemblyInfo.cs
+D:\Projects\taksa\Taksa-Api\Taksa-Api\obj\Debug\netcoreapp1.1\Taksa-Api.dll
+D:\Projects\taksa\Taksa-Api\Taksa-Api\obj\Debug\netcoreapp1.1\Taksa-Api.pdb

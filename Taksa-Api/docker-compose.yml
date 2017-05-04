@@ -1,0 +1,8 @@
+version: '2'
+
+services:
+  taksa-api:
+    image: taksa-api
+    build:
+      context: ./Taksa-Api
+      dockerfile: Dockerfile
