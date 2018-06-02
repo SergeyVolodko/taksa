@@ -10,7 +10,7 @@ namespace Taksa.Domain.Bribes
 
 		private BribeAmount amount;
 
-		private DateTimeOffset timestamp;
+		private BribeTimestamp timestamp;
 		//private bool isPublished;
 
 		protected override void When(object e)
@@ -21,7 +21,7 @@ namespace Taksa.Domain.Bribes
 					Id = x.Id;
 					name = (BribeName)x.Name;
 					amount = (BribeAmount)x.Amount;
-					timestamp = x.Timestamp;
+					timestamp = (BribeTimestamp)x.Timestamp;
 					break;
 			}
 		}
@@ -29,7 +29,7 @@ namespace Taksa.Domain.Bribes
 		public static Bribe Create(
 			BribeName name,
 			BribeAmount amount,
-			DateTimeOffset timestamp)
+			BribeTimestamp timestamp)
 		{
 			var bribe = new Bribe();
 			bribe.Apply(new Events.V1.BribeCreated
@@ -37,7 +37,7 @@ namespace Taksa.Domain.Bribes
 				Id = Guid.NewGuid(),
 				Name = (string)name,
 				Amount = (MoneyRange)amount,
-				Timestamp = timestamp,
+				Timestamp = (DateTimeOffset)timestamp,
 				CreatedAt = DateTimeOffset.UtcNow
 			});
 

@@ -11,5 +11,9 @@ namespace Taksa.Domain.Bribes
 		{
 			Value = value;
 		}
+
+		public static explicit operator DateTimeOffset(BribeTimestamp self) => self.Value;
+
+		public static explicit operator BribeTimestamp(DateTimeOffset value) => new BribeTimestamp(value);
 	}
 }
