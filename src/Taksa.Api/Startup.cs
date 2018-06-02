@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
+using Taksa.Api.BribesApi;
 
 namespace Taksa.Api
 {
@@ -23,9 +24,14 @@ namespace Taksa.Api
 				c.SwaggerDoc("v1", new Info { Title = "Taksa API", Version = "v1" });
 			});
 
+
+
+			services.AddTransient<IBribeService, BribeService>();
+
+
 			services.AddMvc();
 		}
-
+		 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 		{
