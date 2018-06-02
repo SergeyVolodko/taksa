@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Taksa.Api.Contracts;
 
@@ -16,6 +17,7 @@ namespace Taksa.Api.BribesApi
 		}
 
 		[HttpPost]
+		[Authorize]
 		[Route("")]
 		public Task CreateBribe([FromBody]
 			BribeCommands.V1.Create createCommand)

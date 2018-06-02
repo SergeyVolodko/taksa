@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -44,6 +45,16 @@ namespace Taksa.Api
 			services.AddTransient<IBribeService, BribeService>();
 
 
+			services.AddAuthentication(options =>
+			{
+				options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+				options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+			}).AddJwtBearer(options =>
+			{
+				options.Authority = "https://my-test-api.eu.auth0.com";
+				options.Audience = "Q3XqA2aXJjZYIqZ86PhszauwIHzTZ1TE";
+			});
+
 			services.AddMvc();
 		}
 
@@ -61,7 +72,8 @@ namespace Taksa.Api
 			if (env.IsDevelopment())
 				app.UseDeveloperExceptionPage();
 
-			app.UseMvcWithDefaultRoute();
+			app.UseAuthentication();
+			app.UseMvc();
 
 			app.UseSwagger()
 				.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "Taksa API V1"); });
