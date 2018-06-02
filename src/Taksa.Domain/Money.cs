@@ -113,11 +113,6 @@ namespace Exact.Go.Api.Domain.Core.Models
 		//	return this;
 		//}
 
-		/// <summary>
-		/// Performs arithmetic rounding away from zero.
-		/// Examples: 3.45 -> 3.5, 3.55 -> 3.6, -3.45 -> -3.5, -3.55 -> -3.6.
-		/// </summary>
-		/// <param name="decimals">A whole, positive number</param>
 		public Money Round(int decimals)
 		{
 			Amount = Math.Round(Amount, decimals);

@@ -10,5 +10,9 @@ namespace Taksa.Domain.Bribes
 		{
 			Value = value;
 		}
+
+		public static explicit operator string(BribeName self) => self.Value;
+
+		public static explicit operator BribeName(string value) => new BribeName(value);
 	}
 }

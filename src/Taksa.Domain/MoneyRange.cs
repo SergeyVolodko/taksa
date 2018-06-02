@@ -7,5 +7,11 @@ namespace Taksa.Domain
 		public Money Start { get; set; }
 
 		public Money End { get; set; }
+
+		public MoneyRange()
+		{
+			Start = Money.Zero;
+			End = Money.Zero;
+		}
 	}
 }
