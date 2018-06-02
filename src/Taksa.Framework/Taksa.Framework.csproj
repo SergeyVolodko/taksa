@@ -4,8 +4,4 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Taksa.Framework\Taksa.Framework.csproj" />
-  </ItemGroup>
-
 </Project>

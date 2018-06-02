@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{92DC6296
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Taksa.Domain.Tests", "tests\Taksa.Domain.Tests\Taksa.Domain.Tests.csproj", "{5A1DF21D-9779-4F22-8180-855BA6F4E645}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Taksa.Framework", "src\Taksa.Framework\Taksa.Framework.csproj", "{ADBB0BDF-DD38-406B-8115-19CD15128E4A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{5A1DF21D-9779-4F22-8180-855BA6F4E645}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A1DF21D-9779-4F22-8180-855BA6F4E645}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A1DF21D-9779-4F22-8180-855BA6F4E645}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADBB0BDF-DD38-406B-8115-19CD15128E4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADBB0BDF-DD38-406B-8115-19CD15128E4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADBB0BDF-DD38-406B-8115-19CD15128E4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADBB0BDF-DD38-406B-8115-19CD15128E4A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +38,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{602EF1B0-75CD-45E9-9447-8A5672D1C557} = {224631CF-8F8E-44D5-BC62-3A13462AAB5D}
 		{5A1DF21D-9779-4F22-8180-855BA6F4E645} = {92DC6296-6B3E-4B0F-A083-ABAAD71F3353}
+		{ADBB0BDF-DD38-406B-8115-19CD15128E4A} = {224631CF-8F8E-44D5-BC62-3A13462AAB5D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F41E1F93-A4E3-47DC-BBDD-20920F45A0E1}
