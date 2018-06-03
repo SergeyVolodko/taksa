@@ -10,13 +10,15 @@ namespace Taksa.Api.Contracts
 
 		public string full_address { get; set; }
 
-		public string street { get; }
+		public string street { get; set; }
 
-		public string city { get; }
+		public string city { get; set; }
 
-		public string post_code { get; }
+		public string post_code { get; set; }
 
-		public string country { get; }
+		public string province { get; set; }
+
+		public string country { get; set; }
 
 		public static explicit operator Address(AddressDto self)
 			=> new Address(
@@ -26,6 +28,7 @@ namespace Taksa.Api.Contracts
 				self.street,
 				self.city,
 				self.post_code,
+				self.province,
 				self.country);
 	}
 }

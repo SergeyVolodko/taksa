@@ -16,6 +16,8 @@ namespace Taksa.Domain
 
 		public string PostCode { get; }
 
+		public string Province { get; }
+
 		public string Country { get; }
 
 		public Address(
@@ -25,6 +27,7 @@ namespace Taksa.Domain
 			string street,
 			string city,
 			string postCode,
+			string province,
 			string country)
 		{
 			Latitude = latitude;
@@ -33,6 +36,7 @@ namespace Taksa.Domain
 			Street = street;
 			City = city;
 			PostCode = postCode;
+			Province = province;
 			Country = country;
 		}
 	}
