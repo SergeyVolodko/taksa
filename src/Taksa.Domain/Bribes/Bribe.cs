@@ -9,9 +9,13 @@ namespace Taksa.Domain.Bribes
 
 		private BribeComment comment;
 
-		private ServiceCategory category;
+		private ServiceCategory categoryLocal;
 
-		//private BribeAddress address;
+		private ServiceCategory categoryInternational;
+
+		private Address addressLocal;
+
+		private Address addressInternational;
 
 		private BribeAmount amount;
 
@@ -27,11 +31,12 @@ namespace Taksa.Domain.Bribes
 					Id = x.Id;
 					name = (ServiceName)x.Name;
 					amount = (BribeAmount)x.Amount;
+					addressLocal = x.AddressLocal;
 					timestamp = (BribeTimestamp)x.Timestamp;
 					break;
 
 				case Events.V1.BribePublished x:
-					category = new ServiceCategory(x.CategoryLocal, x.CategoryInternational);
+					categoryInternational = (ServiceCategory) x.CategoryInternational;
 					isPublished = true;
 					break;
 			}
@@ -40,6 +45,7 @@ namespace Taksa.Domain.Bribes
 		public static Bribe Create(
 			ServiceName name,
 			BribeAmount amount,
+			Address addressLocal,
 			BribeTimestamp timestamp)
 		{
 			var bribe = new Bribe();
@@ -49,6 +55,7 @@ namespace Taksa.Domain.Bribes
 				Name = (string)name,
 				Amount = (MoneyRange)amount,
 				Timestamp = (DateTimeOffset)timestamp,
+				AddressLocal = addressLocal,
 				CreatedAt = DateTimeOffset.UtcNow
 			});
 
@@ -56,13 +63,12 @@ namespace Taksa.Domain.Bribes
 		}
 
 		public void Publish(
-			ServiceCategory category,
+			ServiceCategory categoryInternational,
 			DateTimeOffset publishedAt) =>
 			Apply(new Events.V1.BribePublished
 			{
 				Id = Id,
-				CategoryLocal = category.LocalValue,
-				CategoryInternational = category.InternationalValue,
+				CategoryInternational = (string)categoryInternational,
 				PublishedAt = publishedAt
 			});
 	}

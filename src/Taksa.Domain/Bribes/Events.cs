@@ -13,6 +13,7 @@ namespace Taksa.Domain.Bribes
 				public MoneyRange Amount { get; set; }
 				public DateTimeOffset Timestamp { get; set; }
 				public DateTimeOffset CreatedAt { get; set; }
+				public Address AddressLocal { get; set; }
 
 				public override string ToString()
 					=> $"Bribe {Id} was created.";

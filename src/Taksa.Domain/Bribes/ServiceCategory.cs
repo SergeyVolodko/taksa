@@ -4,19 +4,16 @@ namespace Taksa.Domain.Bribes
 {
 	public class ServiceCategory : Value<ServiceCategory>
 	{
-		public string LocalValue { get; }
-		public string InternationalValue { get; }
+		public string Value { get; }
 
 		public ServiceCategory(
-			string localValue,
-			string internationalValue)
+			string value)
 		{
-			LocalValue = localValue;
-			InternationalValue = internationalValue;
+			Value = value;
 		}
 
-		//public static explicit operator string(BribeName self) => self.Value;
+		public static explicit operator string(ServiceCategory self) => self.Value;
 
-		//public static explicit operator BribeName(string value) => new BribeName(value);
+		public static explicit operator ServiceCategory(string value) => new ServiceCategory(value);
 	}
 }

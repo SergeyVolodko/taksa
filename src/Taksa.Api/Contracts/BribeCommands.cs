@@ -15,6 +15,8 @@ namespace Taksa.Api.Contracts
 
 				public MoneyRange amount { get; set; }
 
+				public AddressDto address_local { get; set; }
+
 				public override string ToString() => $"Creating new bribe";
 			}
 
@@ -22,8 +24,8 @@ namespace Taksa.Api.Contracts
 			{
 				public Guid bribe_id { get; set; }
 
-				public string category_local { get; set; }
-
+				//public string category_local { get; set; }
+				
 				public string category_international { get; set; }
 			}
 		}

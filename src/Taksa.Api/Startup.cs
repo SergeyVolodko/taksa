@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Swashbuckle.AspNetCore.Swagger;
 using Taksa.Api.BribesApi;
 using Taksa.Domain.Bribes;
 using Taksa.Framework;
@@ -29,6 +30,10 @@ namespace Taksa.Api
 			var typeMapper = ConfigureTypeMapper();
 			var serializer = new JsonNetSerializer();
 
+			services.AddSwaggerGen(c =>
+			{
+				c.SwaggerDoc("v1", new Info { Title = "Taksa API", Version = "v1" });
+			});
 
 			services.AddSingleton<IAggregateStore>(new GesAggregateStore(
 				(type, id) => $"{type.Name}-{id}",

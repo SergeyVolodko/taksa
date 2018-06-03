@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Taksa.Api.Contracts;
+using Taksa.Domain;
 using Taksa.Domain.Bribes;
 using Taksa.Framework;
 
@@ -26,6 +27,7 @@ namespace Taksa.Api.BribesApi
 			var bribe = Bribe.Create(
 				(ServiceName)command.service_name,
 				(BribeAmount)command.amount,
+				(Address)command.address_local,
 				(BribeTimestamp)command.timestamp);
 
 			return store.Save(bribe);
@@ -34,7 +36,7 @@ namespace Taksa.Api.BribesApi
 		public Task Handle(BribeCommands.V1.Publish command) =>
 			HandleUpdate(command.bribe_id, bribe =>
 				bribe.Publish(
-					new ServiceCategory(command.category_local, command.category_international),
+					(ServiceCategory) command.category_international,
 					DateTimeOffset.UtcNow)
 			);
 
