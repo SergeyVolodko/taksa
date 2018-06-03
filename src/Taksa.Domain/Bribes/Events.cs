@@ -17,6 +17,14 @@ namespace Taksa.Domain.Bribes
 				public override string ToString()
 					=> $"Bribe {Id} was created.";
 			}
+
+			public class BribePublished
+			{
+				public Guid Id { get; set; }
+				public string CategoryLocal { get; set; }
+				public string CategoryInternational { get; set; }
+				public DateTimeOffset PublishedAt { get; set; }
+			}
 		}
 	}
 }

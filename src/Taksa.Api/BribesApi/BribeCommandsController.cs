@@ -1,7 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Taksa.Api.Contracts;
+using Taksa.Domain.Bribes;
 
 namespace Taksa.Api.BribesApi
 {
@@ -22,6 +24,26 @@ namespace Taksa.Api.BribesApi
 			BribeCommands.V1.Create createCommand)
 		{
 			return service.Handle(createCommand);
+		}
+
+		[HttpPost]
+		//[Authorize]
+		[Route("publish")]
+		public Task<IActionResult> PublishBribe([FromBody]
+			BribeCommands.V1.Publish request) =>
+			HandleOrThrow(request, x => service.Handle(x));
+
+		private async Task<IActionResult> HandleOrThrow<T>(T request, Func<T, Task> handler)
+		{
+			try
+			{
+				await handler(request);
+				return Ok();
+			}
+			catch (Exceptions.BribeNotFoundException)
+			{
+				return NotFound();
+			}
 		}
 	}
 }

@@ -17,6 +17,15 @@ namespace Taksa.Api.Contracts
 
 				public override string ToString() => $"Creating new bribe";
 			}
+
+			public class Publish
+			{
+				public Guid bribe_id { get; set; }
+
+				public string category_local { get; set; }
+
+				public string category_international { get; set; }
+			}
 		}
 	}
 }

@@ -5,13 +5,19 @@ namespace Taksa.Domain.Bribes
 {
 	public class Bribe : Aggregate
 	{
-		private BribeName name;
+		private ServiceName name;
+
 		private BribeComment comment;
+
+		private ServiceCategory category;
+
+		//private BribeAddress address;
 
 		private BribeAmount amount;
 
 		private BribeTimestamp timestamp;
-		//private bool isPublished;
+
+		private bool isPublished;
 
 		protected override void When(object e)
 		{
@@ -19,15 +25,20 @@ namespace Taksa.Domain.Bribes
 			{
 				case Events.V1.BribeCreated x:
 					Id = x.Id;
-					name = (BribeName)x.Name;
+					name = (ServiceName)x.Name;
 					amount = (BribeAmount)x.Amount;
 					timestamp = (BribeTimestamp)x.Timestamp;
+					break;
+
+				case Events.V1.BribePublished x:
+					category = new ServiceCategory(x.CategoryLocal, x.CategoryInternational);
+					isPublished = true;
 					break;
 			}
 		}
 
 		public static Bribe Create(
-			BribeName name,
+			ServiceName name,
 			BribeAmount amount,
 			BribeTimestamp timestamp)
 		{
@@ -43,5 +54,16 @@ namespace Taksa.Domain.Bribes
 
 			return bribe;
 		}
+
+		public void Publish(
+			ServiceCategory category,
+			DateTimeOffset publishedAt) =>
+			Apply(new Events.V1.BribePublished
+			{
+				Id = Id,
+				CategoryLocal = category.LocalValue,
+				CategoryInternational = category.InternationalValue,
+				PublishedAt = publishedAt
+			});
 	}
 }
