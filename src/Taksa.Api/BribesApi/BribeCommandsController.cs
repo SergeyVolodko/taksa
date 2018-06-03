@@ -17,7 +17,6 @@ namespace Taksa.Api.BribesApi
 		}
 
 		[HttpPost]
-		[Authorize]
 		[Route("")]
 		public Task CreateBribe([FromBody]
 			BribeCommands.V1.Create createCommand)

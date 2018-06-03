@@ -5,15 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.2" />
-    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="2.4.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="2.4.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUi" Version="2.4.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="1.1.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUi" Version="1.1.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,6 +18,18 @@
   <ItemGroup>
     <ProjectReference Include="..\Taksa.Domain\Taksa.Domain.csproj" />
     <ProjectReference Include="..\Taksa.Framework\Taksa.Framework.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\swagger-ui\bribe.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\swagger-ui\swagger.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\swagger-ui\tokeninput.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

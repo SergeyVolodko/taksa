@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Swashbuckle.AspNetCore.Swagger;
 using Taksa.Api.BribesApi;
 using Taksa.Domain.Bribes;
 using Taksa.Framework;
@@ -30,10 +29,6 @@ namespace Taksa.Api
 			var typeMapper = ConfigureTypeMapper();
 			var serializer = new JsonNetSerializer();
 
-			services.AddSwaggerGen(c =>
-			{
-				c.SwaggerDoc("v1", new Info { Title = "Taksa API", Version = "v1" });
-			});
 
 			services.AddSingleton<IAggregateStore>(new GesAggregateStore(
 				(type, id) => $"{type.Name}-{id}",
@@ -72,11 +67,22 @@ namespace Taksa.Api
 			if (env.IsDevelopment())
 				app.UseDeveloperExceptionPage();
 
+			// Enable swagger and customize
+			var iisVirtualDirectory = "";
+			app.UseSwagger();
+			app.UseStaticFiles(); // Used by custom script for swagger-ui
+			app.UseSwaggerUI(c =>
+			{
+				c.SwaggerEndpoint("/swagger/v1/swagger.json", "Taksa API");
+				
+				c.InjectOnCompleteJavaScript($"{iisVirtualDirectory}/swagger-ui/tokeninput.js");
+
+				c.InjectStylesheet($"{iisVirtualDirectory}/swagger-ui/swagger.css");
+				c.DocExpansion("none");
+			});
+
 			app.UseAuthentication();
 			app.UseMvc();
-
-			app.UseSwagger()
-				.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "Taksa API V1"); });
 		}
 	}
 }
