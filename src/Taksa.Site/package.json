@@ -1,0 +1,10 @@
+{
+  "version": "1.0.0",
+  "name": "asp.net",
+  "private": true,
+  "devDependencies": {
+    "google-map-react": "1.0.3",
+    "jquery": "2.2.4",
+    "bootstrap": "3.3.7"
+  }
+}
