@@ -3,17 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2002
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Taksa.Domain", "src\Taksa.Domain\Taksa.Domain.csproj", "{602EF1B0-75CD-45E9-9447-8A5672D1C557}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Taksa.Domain", "src\Taksa.Domain\Taksa.Domain.csproj", "{602EF1B0-75CD-45E9-9447-8A5672D1C557}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{224631CF-8F8E-44D5-BC62-3A13462AAB5D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{92DC6296-6B3E-4B0F-A083-ABAAD71F3353}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Taksa.Domain.Tests", "tests\Taksa.Domain.Tests\Taksa.Domain.Tests.csproj", "{5A1DF21D-9779-4F22-8180-855BA6F4E645}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Taksa.Domain.Tests", "tests\Taksa.Domain.Tests\Taksa.Domain.Tests.csproj", "{5A1DF21D-9779-4F22-8180-855BA6F4E645}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Taksa.Framework", "src\Taksa.Framework\Taksa.Framework.csproj", "{ADBB0BDF-DD38-406B-8115-19CD15128E4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Taksa.Framework", "src\Taksa.Framework\Taksa.Framework.csproj", "{ADBB0BDF-DD38-406B-8115-19CD15128E4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Taksa.Api", "src\Taksa.Api\Taksa.Api.csproj", "{851B1F53-F233-48E1-9C6C-442E791EDEC3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Taksa.Api", "src\Taksa.Api\Taksa.Api.csproj", "{851B1F53-F233-48E1-9C6C-442E791EDEC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Taksa.Site", "src\Taksa.Site\Taksa.Site.csproj", "{9C1E654F-812C-497A-BD1D-2C535A4D38F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,10 @@ Global
 		{851B1F53-F233-48E1-9C6C-442E791EDEC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{851B1F53-F233-48E1-9C6C-442E791EDEC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{851B1F53-F233-48E1-9C6C-442E791EDEC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C1E654F-812C-497A-BD1D-2C535A4D38F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C1E654F-812C-497A-BD1D-2C535A4D38F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C1E654F-812C-497A-BD1D-2C535A4D38F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C1E654F-812C-497A-BD1D-2C535A4D38F0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +52,7 @@ Global
 		{5A1DF21D-9779-4F22-8180-855BA6F4E645} = {92DC6296-6B3E-4B0F-A083-ABAAD71F3353}
 		{ADBB0BDF-DD38-406B-8115-19CD15128E4A} = {224631CF-8F8E-44D5-BC62-3A13462AAB5D}
 		{851B1F53-F233-48E1-9C6C-442E791EDEC3} = {224631CF-8F8E-44D5-BC62-3A13462AAB5D}
+		{9C1E654F-812C-497A-BD1D-2C535A4D38F0} = {224631CF-8F8E-44D5-BC62-3A13462AAB5D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F41E1F93-A4E3-47DC-BBDD-20920F45A0E1}
