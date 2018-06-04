@@ -22,6 +22,16 @@ var CountryMap = React.createClass({
                 theMap.fitBounds(results[0].geometry.viewport);
             }
         });
+
+        var world_geometry = new google.maps.FusionTablesLayer({
+            query: {
+                select: 'geometry',
+                from: '1N2LBk4JHwWpOY4d9fobIn27lfnZ5MDy-NoqqRpk',
+                where: "ISO_2DIGIT IN ('UA')"
+            },
+            map: theMap,
+            suppressInfoWindows: true
+        });
     },
 
     render: function () {
