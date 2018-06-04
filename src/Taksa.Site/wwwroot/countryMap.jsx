@@ -1,8 +1,8 @@
 ﻿
 var styles = {
     map: {
-        height: '500px',
-        width: '500px'
+        height: '1000px',
+        width: '1000px'
     }
 };
 
@@ -13,6 +13,14 @@ var CountryMap = React.createClass({
         theMap = new google.maps.Map(document.getElementById('map'), {
             center: { lat: -34.397, lng: 150.644 },
             zoom: 8
+        });
+
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode({ 'address': "Ukraine" }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                theMap.setCenter(results[0].geometry.location);
+                theMap.fitBounds(results[0].geometry.viewport);
+            }
         });
     },
 
