@@ -23,11 +23,11 @@ class App extends React.Component{
     }
 
     goToProvince(province) {
-        this.setState(() => {
-            selectedProvince = province;
-        });
-
-        this.mapRef.current.showProvince(this.state.selectedProvince);
+        this.setState({
+            selectedProvince : province
+        },
+            () => this.mapRef.current.showProvince(this.state.selectedProvince)
+        );
     }
 
     render() {

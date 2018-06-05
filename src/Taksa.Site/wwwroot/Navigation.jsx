@@ -2,20 +2,19 @@
 
     constructor(props) {
         super(props);
-        this.state = { selectedProvince: null };
+        this.state = { selectedProvince: "empty" };
     }
 
     changeProvince() {
-        this.setState(() => {
-            selectedProvince = "Odesa oblast";
-        });
-
-        this.props.onProvinceSelected(this.state.selectedProvince);
+        this.setState({
+                selectedProvince : "Odesa oblast"
+            }, () => this.props.onProvinceSelected(this.state.selectedProvince)
+        );
     }
 
     render() {
         return (
-            <div onClick={() => this.changeProvince()}>Navigation</div>
+            <div onClick={() => this.changeProvince()}>Navigation :: {this.state.selectedProvince}</div>
         );
     }
 }

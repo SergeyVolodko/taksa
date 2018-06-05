@@ -4,11 +4,16 @@ class CountryMap extends React.Component{
 
     constructor(props) {
         super(props);
+
+        this.state = {address: "no"};
     }
 
     render() {
         return (
-            <div id="map" style={styles.map}></div>
+            <div>
+                <div id="map" style={styles.map}></div>
+                <div>{this.state.address}</div>
+            </div>
         );
     }
 
@@ -44,6 +49,10 @@ class CountryMap extends React.Component{
     }
 
     showProvince(province) {
+        //this.setState(() => {
+        //    address: province
+        //});
+
         alert(province);
     }
 }
