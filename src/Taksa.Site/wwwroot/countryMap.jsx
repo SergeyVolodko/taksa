@@ -1,16 +1,19 @@
 ﻿
-var styles = {
-    map: {
-        height: '1000px',
-        width: '1000px'
+
+class CountryMap extends React.Component{
+
+    constructor(props) {
+        super(props);
     }
-};
 
-var theMap;
+    render() {
+        return (
+            <div id="map" style={styles.map}></div>
+        );
+    }
 
-var CountryMap = React.createClass({
-    initMap : function(){
-        theMap = new google.maps.Map(document.getElementById('map'), {
+    initMap() {
+        var theMap = new google.maps.Map(document.getElementById('map'), {
             center: { lat: -34.397, lng: 150.644 },
             zoom: 8
         });
@@ -32,20 +35,15 @@ var CountryMap = React.createClass({
             map: theMap,
             suppressInfoWindows: true
         });
-    },
 
-    render: function () {
-        return (
-            <div id="map" style={styles.map}></div>
-        );
-    },
+        this.props.onMapInitialized(theMap);
+    }
 
-    componentDidMount: function () {
+    componentDidMount() {
         this.initMap();
     }
-});
 
-ReactDOM.render(
-    <CountryMap />,
-    document.getElementById('content')
-);
+    showProvince(province) {
+        alert(province);
+    }
+}
