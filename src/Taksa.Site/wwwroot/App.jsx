@@ -17,8 +17,8 @@ class App extends React.Component{
     }
 
     updateMap(updatedMap) {
-        this.setState(() => {
-            theMap = updatedMap;
+        this.setState({
+            theMap : updatedMap
         });
     }
 

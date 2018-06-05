@@ -7,7 +7,7 @@
 
     changeProvince() {
         this.setState({
-                selectedProvince : "Odesa oblast"
+                selectedProvince : "Odeska oblast"
             }, () => this.props.onProvinceSelected(this.state.selectedProvince)
         );
     }

@@ -5,7 +5,10 @@ class CountryMap extends React.Component{
     constructor(props) {
         super(props);
 
-        this.state = {address: "no"};
+        this.state = {
+            address: "no",
+            highlight_layer : null
+        };
     }
 
     render() {
@@ -31,15 +34,18 @@ class CountryMap extends React.Component{
             }
         });
 
-        var world_geometry = new google.maps.FusionTablesLayer({
-            query: {
-                select: 'geometry',
-                from: '1N2LBk4JHwWpOY4d9fobIn27lfnZ5MDy-NoqqRpk',
-                where: "ISO_2DIGIT IN ('UA')"
-            },
-            map: theMap,
-            suppressInfoWindows: true
-        });
+        this.setState({
+            highlight_layer: new google.maps.FusionTablesLayer({
+                query: {
+                    select: 'geometry',
+                    from: '1N2LBk4JHwWpOY4d9fobIn27lfnZ5MDy-NoqqRpk',
+                    where: "ISO_2DIGIT IN ('UA')"
+                },
+                map: theMap,
+                suppressInfoWindows: true
+            })
+            }
+        );
 
         this.props.onMapInitialized(theMap);
     }
@@ -49,10 +55,16 @@ class CountryMap extends React.Component{
     }
 
     showProvince(province) {
-        //this.setState(() => {
-        //    address: province
-        //});
 
-        alert(province);
+        //this.state.highlight_layer.setMap(null);
+
+
+        this.state.highlight_layer.setOptions({
+            query: {
+                select: 'geometry',
+                from: '14gH6F4xShEBbJD7oAZfvLAtB_U-u_aJeByNfs8Id',
+                where: "name IN ('{0}')".replace("{0}", province)
+            }
+        });
     }
 }
