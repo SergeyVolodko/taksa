@@ -2,19 +2,29 @@
 
     constructor(props) {
         super(props);
-        this.state = { selectedProvince: "empty" };
+        this.state = {
+            selectedProvince: "empty",
+            provinces: ukraineProvinces
+        };
     }
 
-    changeProvince() {
+    changeProvince(e) {
         this.setState({
-                selectedProvince : "Odeska oblast"
+                selectedProvince: e.target.value
             }, () => this.props.onProvinceSelected(this.state.selectedProvince)
         );
     }
 
     render() {
         return (
-            <div onClick={() => this.changeProvince()}>Navigation :: {this.state.selectedProvince}</div>
+            <div>Navigation :: {this.state.selectedProvince}
+
+                <select value={this.state.selectedProvince} onChange={(e) => this.changeProvince(e)}>
+                    {this.state.provinces.map(p => <option value={p.id}> {p.name} </option>)}
+                </select>
+
+               
+            </div>
         );
     }
 }
