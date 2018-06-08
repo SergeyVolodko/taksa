@@ -15,4 +15,10 @@
     <PackageReference Include="React.AspNet" Version="3.3.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="wwwroot\Ukraine.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>
