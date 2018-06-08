@@ -29,16 +29,8 @@ class App extends React.Component{
     constructor() {
         super();
         this.state = {
-            theMap: null,
             selectedProvince: ""
         };
-        this.mapRef = React.createRef();
-    }
-
-    updateMap(updatedMap) {
-        this.setState({
-            theMap : updatedMap
-        });
     }
 
     goToProvince(province) {
@@ -53,8 +45,7 @@ class App extends React.Component{
         return (
             <div>
                 <Navigation onProvinceSelected={(p) => this.goToProvince(p)} />
-                <CountryMap onMapInitialized={(m) => this.updateMap(m)}
-                    ref={this.mapRef} />
+                <CountryMap />
             </div>
         );
     }
