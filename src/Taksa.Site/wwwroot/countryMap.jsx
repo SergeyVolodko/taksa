@@ -2,6 +2,7 @@
 
 class CountryMap extends React.Component{
 
+
     constructor(props) {
         super(props);
 
@@ -20,6 +21,12 @@ class CountryMap extends React.Component{
                 <div>{this.state.address}</div>
             </div>
         );
+    }
+
+
+    centerMapToGeometry(self, geometry) {
+        self.state.theMap.setCenter(geometry.location);
+        self.state.theMap.fitBounds(geometry.viewport);
     }
 
     centerMapTo(address, mapRef) {
@@ -43,6 +50,41 @@ class CountryMap extends React.Component{
         });
     }
 
+    selectProvince(e, self) {
+        self.stopListenMapOnMouseOver(self);
+        self.state.theMap.data.overrideStyle(e.feature, styles.provinceSelected);
+
+        self.state.geocoder.geocode({
+            'latLng': e.latLng
+        }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                if (results[2]) {
+                    //var province = results[2].formatted_address;
+                    self.centerMapToGeometry(self, results[2].geometry);
+                }
+            }
+        });
+    }
+
+    startListenMapOnMouseOver(self) {
+        google.maps.event.clearListeners(self.state.theMap.data, 'mouseover');
+        self.state.theMap.data.addListener('mouseover', function (e) {
+            self.state.theMap.data.revertStyle();
+            self.state.theMap.data.overrideStyle(e.feature, styles.provinceOnHover);
+        });
+    }
+
+    startListenMapOnMouseOut(self) {
+        self.state.theMap.data.addListener('mouseout', function (e) {
+            self.state.theMap.data.revertStyle();
+            self.startListenMapOnMouseOver(self);
+        });
+    }
+
+    stopListenMapOnMouseOver(self) {
+        google.maps.event.clearListeners(self.state.theMap.data, 'mouseover');
+    }
+
     initMap() {
         this.state.theMap = new google.maps.Map(document.getElementById('map'), {
             center: { lat: -34.397, lng: 150.644 },
@@ -51,38 +93,22 @@ class CountryMap extends React.Component{
 
         this.centerMapTo("Ukraine", this.state.theMap);
 
-        //this.setState({
-        //    highlight_layer: new google.maps.FusionTablesLayer({
-        //        query: {
-        //            select: 'geometry',
-        //            from: '1N2LBk4JHwWpOY4d9fobIn27lfnZ5MDy-NoqqRpk',
-        //            where: "ISO_2DIGIT IN ('UA')"
-        //        },
-        //        map: this.state.theMap,
-        //        suppressInfoWindows: true
-        //    })
-        //});
+        this.state.theMap.data.loadGeoJson('./Ukraine.json');
 
-        this.state.theMap.data.loadGeoJson('./ch.json');
-
-        this.state.theMap.data.setStyle({
-            fillColor: 'lightgray',
-            strokeColor: 'gray',
-            strokeWeight: 1
-        });
+        this.state.theMap.data.setStyle(styles.countryProvince);
 
         var geocoder = this.state.geocoder;
-        this.state.theMap.addListener('click', (e) => this.displayAddress(e, geocoder));
         this.state.theMap.data.addListener('dblclick', (e) => this.displayAddress(e, geocoder));
 
+        this.state.theMap.data.addListener('click', (e) => this.selectProvince(e, this));
 
-        //this.props.onMapInitialized(this.state.theMap);
+        this.startListenMapOnMouseOver(this);
+        this.startListenMapOnMouseOut(this);
     }
 
     componentDidMount() {
         this.initMap();
     }
-
 
     showProvince(province) {
 
